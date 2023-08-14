@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chatbot Support</title>
+  <link rel="icon" type="image/png" href="/static/icon.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      background-image: url("/static/book.jpg");
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .chat-container {
+      position: relative;
+      width: 80%;
+      height: 80%;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .message-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .user-message {
+      align-self: flex-end;
+      background-color: rgba(119, 119, 119, 0.8);
+      padding: 10px;
+      border-radius: 20px;
+    }
+
+    .bot-message {
+      align-self: flex-start;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      border-radius: 20px;
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .user-input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      background-color: rgba(119, 119, 119, 0.3);
+      color: #fff;
+    }
+
+    .send-button,
+    .audio-button {
+      background-color: rgba(119, 119, 119, 0.8);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .send-button:hover,
+    .audio-button:hover {
+      background-color: rgba(119, 119, 119, 1);
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-messages">
+      <div class="message-container">
+        <div class="bot-message">
+          <span class="speaker-name">Chatbot:</span> Srinila here!
+        </div>
+      </div>
+    </div>
+    <div class="input-container">
+      <input type="text" id="user-input" class="user-input" placeholder="Type your message...">
+      <button class="send-button" onclick="getBotResponse(1)"><i class="fas fa-paper-plane"></i></button>
+      <button class="audio-button" onclick="getBotResponse(2)"><i class="fas fa-microphone"></i></button>
+    </div>
+  </div>
+  <script>
+
+    // Add event listener for the "keydown" event on the input element
+    document.getElementById("user-input").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault(); // Prevent the default form submission behavior
+        getBotResponse(1); // Call the getBotResponse function for button click
+      }
+    });
+
+    // Function to send user input to the server and receive the bot's response
+    function getBotResponse(mode) {
+      if (mode === 2) {
+        lisenting = true
+        toggleAudioButtonColor(lisenting);
+          }
+      var user_input = document.getElementById("user-input").value;
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/get_response", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText).response;
+          if (mode === 2) {
+            lisenting = false
+            toggleAudioButtonColor(lisenting);
+            convertToSpeech(response);
+          }
+          addUserMessage(user_input);
+          addBotMessage(response);
+        }
+      };
+      xhr.send("user_input=" + user_input + "&mode=" + mode);
+
+      document.getElementById("user-input").value = "";
+    }
+
+     // Function to convert bot response to speech
+     function convertToSpeech(text) {
+      var synth = window.speechSynthesis;
+      var utterance = new SpeechSynthesisUtterance();
+      utterance.text = text;
+      utterance.lang = 'en-US';
+      synth.speak(utterance);
+    }
+
+    // Function to add the user's message as a new message in the chat
+    function addUserMessage(message) {
+      var chatMessages = document.querySelector(".chat-messages");
+      var messageContainer = document.createElement("div");
+      messageContainer.className = "message-container";
+
+      var userMessage = document.createElement("div");
+      userMessage.className = "user-message";
+      var speakerName = document.createElement("span");
+      speakerName.className = "speaker-name";
+      speakerName.textContent = "You:";
+      userMessage.appendChild(speakerName);
+      userMessage.innerHTML += " " + message;
+
+      messageContainer.appendChild(userMessage);
+      chatMessages.appendChild(messageContainer);
+    }
+
+    // Function to add the bot's response as a new message in the chat
+    function addBotMessage(message) {
+      var chatMessages = document.querySelector(".chat-messages");
+      var messageContainer = document.createElement("div");
+      messageContainer.className = "message-container";
+
+      var botMessage = document.createElement("div");
+      botMessage.className = "bot-message";
+      var speakerName = document.createElement("span");
+      speakerName.className = "speaker-name";
+      speakerName.textContent = "Chatbot:";
+      botMessage.appendChild(speakerName);
+      botMessage.innerHTML += " " + message;
+
+      messageContainer.appendChild(botMessage);
+      chatMessages.appendChild(messageContainer);
+    }
+
+    // Function to toggle the audio button color based on the mode
+    function toggleAudioButtonColor(lisenting) {
+      var audioButton = document.querySelector(".audio-button");
+      if (lisenting === true) {
+        audioButton.style.backgroundColor = "red";
+      } else {
+        audioButton.style.backgroundColor = "rgba(119, 119, 119, 0.8)";
+      }
+    }
+
+  </script>
+</body>
+</html>
