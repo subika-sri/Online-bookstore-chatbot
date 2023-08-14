@@ -1,0 +1,196 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "Hello",
+        "Good day",
+        "Greetings",
+        "Hey there",
+        "Hi, how are you?",
+        "Is anyone there?",
+        "Welcome",
+        "Hey, how's it going?"
+      ],
+      "responses": [
+        "Hello! Welcome to our online bookstore. How can I assist you today?",
+        "Hey there! How may I help you find the perfect book?",
+        "Hi there, what can I do for you?",
+        "Hi there, how can I help?",
+        "Hello, thanks for visiting. How can I assist you today?",
+        "Greetings! How may I help you discover your next great read?",
+        "Hi! How can I assist you in finding the perfect book?",
+        "Hey! It's great to see you here. How can I make your book shopping experience exceptional?",
+        "Hello! How can I make your online book browsing experience smooth and enjoyable?",
+        "Hi, how are you doing today? How can I assist you?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye",
+        "Take care",
+        "Farewell",
+        "Until next time",
+        "Bye bye",
+        "Have a great day",
+        "Good to chat with you",
+        "See you around"
+      ],
+      "responses": [
+        "See you later, thanks for visiting",
+        "Have a nice day",
+        "Bye! Come back again soon.",
+        "Goodbye! Take care and happy reading!",
+        "Farewell! Enjoy your day.",
+        "Until next time! Happy reading!",
+        "Bye bye! See you soon.",
+        "Have a great day! Happy reading!",
+        "Good to chat with you! If you have any more questions, feel free to ask.",
+        "See you around! Happy reading!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Thank's a lot!",
+        "Appreciate it",
+        "Many thanks",
+        "I'm grateful",
+        "Thanks for your assistance",
+        "Thank you so much",
+        "You're awesome"
+      ],
+      "responses": [
+        "Happy to help!",
+        "Any time!",
+        "My pleasure",
+        "You're welcome!",
+        "Glad I could assist!",
+        "No problem!",
+        "You're most welcome!",
+        "Always here to help!",
+        "Thank you for your kind words!"
+      ]
+    },
+    {
+      "tag": "items",
+      "patterns": [
+        "Which items do you have?",
+        "What kinds of items are there?",
+        "What do you sell?",
+        "Can you recommend some books?",
+        "What genres do you have?",
+        "Tell me about your book collection",
+        "What are your popular books?",
+        "I'm looking for a specific genre",
+        "What authors do you have?",
+        "Can you suggest a good book?"
+      ],
+      "responses": [
+        "We have a wide range of books across various genres such as fiction, non-fiction, mystery, romance, science fiction, and more.",
+        "Our bookstore offers a diverse selection of books, including bestsellers, classics, self-help, biographies, and more.",
+        "Our collection includes books from popular authors, both contemporary and classic, covering a wide range of topics and genres.",
+        "We have a variety of books, including novels, poetry collections, self-help books, educational resources, and much more.",
+        "Our book inventory covers a wide range of genres to suit different interests and reading preferences.",
+        "From thrillers to historical fiction, memoirs to fantasy novels, we have something for everyone in our book collection.",
+        "We offer a curated collection of books, including both well-known titles and hidden gems across various genres.",
+        "Our bookstore showcases a diverse range of books, allowing readers to explore different subjects, perspectives, and literary styles.",
+        "We have a vast selection of books from both established and emerging authors, ensuring there's something for every reader.",
+        "If you're looking for a specific genre or author, feel free to let us know, and we'll be happy to assist you in finding the perfect book."
+      ]
+    },
+    {
+      "tag": "payments",
+      "patterns": [
+        "Do you take credit cards?",
+        "Do you accept Mastercard?",
+        "Can I pay with Paypal?",
+        "Are you cash only?",
+        "What payment methods do you accept?",
+        "How can I pay for my order?",
+        "Do you offer payment options other than credit cards?",
+        "Can I use Apple Pay or Google Pay?",
+        "Do you accept international payment methods?"
+      ],
+      "responses": [
+        "We accept VISA, Mastercard, American Express, Discover, and Paypal for online payments.",
+        "We accept most major credit cards, including VISA, Mastercard, and American Express, as well as Paypal.",
+        "We accept multiple payment methods, including credit cards, debit cards, and Paypal. We are not cash-only.",
+        "We offer a variety of payment options to ensure a convenient shopping experience, including major credit cards and Paypal."
+      ]
+    },
+    {
+      "tag": "delivery.timeframe",
+      "patterns": [
+        "How long does delivery take?",
+        "How long does shipping take?",
+        "When do I get my delivery?",
+        "What is the delivery timeframe?",
+        "How soon will I receive my order?",
+        "Do you offer express shipping?"
+      ],
+      "responses": [
+        "Delivery usually takes 2-4 business days, depending on your location.",
+        "Shipping generally takes 2-4 business days within the country.",
+        "You can expect to receive your delivery within 2-4 business days from the date of purchase.",
+        "The delivery timeframe is typically 2-4 business days, but it may vary based on your location and shipping method."
+      ]
+    },
+    {
+      "tag": "delivery.tracking",
+      "patterns": [
+        "Can I track my delivery?",
+        "What if my package doesn't arrive?"
+      ],
+      "responses": [
+        "You can track your delivery. Once your order is shipped, we will provide you with a tracking number and instructions to track your package.",
+        "If you have any concerns about the delivery of your order, you can track your delivery or reach out to our customer support, and we'll be happy to assist you."
+      ]
+    },
+    {
+      "tag": "delivery.fee",
+      "patterns": [
+        "Is there a shipping fee?",
+        "Do you provide international shipping?"
+      ],
+      "responses": [
+        "We offer free shipping on all orders within the country. For international shipping, shipping fees may apply."
+      ]
+    },
+    {
+      "tag": "funny",
+      "patterns": [
+        "Tell me a joke!",
+        "Tell me something funny!",
+        "Do you know a joke?",
+        "Make me laugh!",
+        "I could use a good laugh",
+        "Any funny stories?",
+        "Humor me",
+        "Can you share a funny anecdote?",
+        "Give me a funny one-liner",
+        "Got any jokes?"
+      ],
+      "responses": [
+        "Why don't scientists trust atoms? Because they make up everything!",
+        "Did you hear about the mathematician who's afraid of negative numbers? He'll stop at nothing to avoid them!",
+        "Why don't skeletons fight each other? They don't have the guts!",
+        "I used to play piano by ear, but now I use my hands.",
+        "Why did the scarecrow win an award? Because he was outstanding in his field!",
+        "Why don't eggs tell jokes? Because they might crack up!",
+        "What did one wall say to the other wall? I'll meet you at the corner!",
+        "Why did the bicycle fall over? Because it was two-tired!",
+        "What do you call a snowman with a six-pack? An abdominal snowman!",
+        "Why don't some couples go to the gym? Because some relationships don't work out!"
+      ]
+    }
+  ]
+}
